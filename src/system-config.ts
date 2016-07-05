@@ -36,6 +36,7 @@ const barrels: string[] = [
   'app/shared',
   'app/minesweeper-board',
   'app/+root'
+  'app/new-game',
   /** @cli-barrel */
 ];
 
