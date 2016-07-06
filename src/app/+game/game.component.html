@@ -1,2 +1,3 @@
 
-<new-game (onGameCreated)="onGameCreated($event)"></new-game>
+<new-game (onGameCreated)="onGameCreated($event)" *ngIf="!gameStarted"></new-game>
+<minesweeper-board [gameConfig]="gameConfig" *ngIf="gameStarted"></minesweeper-board>

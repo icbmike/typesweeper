@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/common';
 import { NewGame, GameDifficulty } from './new-game';
 
 @Component({
@@ -29,6 +28,6 @@ export class NewGameComponent {
       ? this.model 
       : this.difficultyConfigMap[difficulty];
     
-    this.onGameCreated.emit(gameConfig);    
+    this.onGameCreated.emit(gameConfig);
   }
 }

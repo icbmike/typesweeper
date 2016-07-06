@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { NewGame } from '../new-game';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinesweeperBoardComponent implements OnInit {
 
-  constructor() {}
+  @Input() gameConfig: NewGame;
 
   ngOnInit() {
-  }
-
+    console.log(this.gameConfig);
+  } 
 }
