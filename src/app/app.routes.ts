@@ -1,9 +1,9 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { RootComponent } from './+root';
-import { NewGameComponent } from './+new-game';
+import { GameComponent } from './+game';
 
 export const routes: RouterConfig = [
- { path: 'game', component: NewGameComponent },
+ { path: 'game', component: GameComponent },
  { path: '', component: RootComponent }
 ];
 
