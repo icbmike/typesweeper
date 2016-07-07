@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NewGameComponent, NewGame } from '../new-game';
+import { GameConfig } from './game-config';
+import { NewGameComponent } from '../new-game';
 import { MinesweeperBoardComponent } from '../minesweeper-board'
 
 @Component({
@@ -12,9 +13,9 @@ import { MinesweeperBoardComponent } from '../minesweeper-board'
 export class GameComponent {
 
   gameStarted = false;
-  gameConfig : NewGame;
+  gameConfig : GameConfig;
 
-  onGameCreated(gameConfig: NewGame){
+  onGameCreated(gameConfig: GameConfig){
       this.gameConfig = gameConfig;
       this.gameStarted = true;
   }
