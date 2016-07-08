@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameConfig } from '../+game';
 
+import * as _ from 'lodash';
+
 @Component({
   moduleId: module.id,
   selector: 'minesweeper-board',
@@ -13,7 +15,7 @@ export class MinesweeperBoardComponent implements OnInit {
 
   ngOnInit() {
     //Build board
-  } 
+  }
 }
 
 class MinesweeperBoard {
@@ -21,11 +23,18 @@ class MinesweeperBoard {
   private tiles: Tile[][];
 
   constructor(public numMines: number, public width: number, public height: number){
-    this.tiles = new Array<Array<Tile>>(width);
-  }
+    this.tiles = _.map(_.range(width), i => _.map(_.range(height), j => new Tile()));
 
-  isTileMine(x : number, y: number) {
-    return this.tiles[x][y].isMine;
+    //populate mines
+    while(numMines > 0){
+      let x = Math.floor(Math.random() * width),
+          y = Math.floor(Math.random() * height);
+
+      if(!this.tiles[x][y].isMine){
+        this.tiles[x][y].isMine = true;
+        numMines--;
+      }
+    }
   }
 }
 
