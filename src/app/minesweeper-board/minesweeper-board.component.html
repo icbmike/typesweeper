@@ -1,3 +1,10 @@
-<p>
-  minesweeper-board works!
-</p>
+<div class="board">
+  <div class="boardHeader">
+
+  </div>
+  <div class="tiles">
+    <div class="tileRow" *ngFor="tileRow in board.tiles">
+      <board-tile [tile]="tile" *ngFor="tile in tileRow"></board-tile>
+    </div>
+  </div>
+</div>
