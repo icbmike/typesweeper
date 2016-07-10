@@ -11,24 +11,30 @@ export class BoardTileComponent {
 
   @Input() tile: Tile;
   @Output() tileRevealed = new EventEmitter<Tile>();
+  @Output() toggleFlag = new EventEmitter<Tile>();
 
   onMouseDown($event: MouseEvent){
     $event.preventDefault();
 
-    switch($event.which){
-      case 1: //left button
-      this.revealTile();
-      case 3: //right button
-      this.plantFlag();
+    if(!this.tile.isRevealed){
+      switch($event.which){
+        case 1: // left button
+        if(!this.tile.hasFlag){
+          this.revealTile();
+        }
+        break;
+        case 3: // right button
+        this.plantFlag();
+        break;
+      }
     }
   }
 
   revealTile(){
     this.tileRevealed.emit(this.tile);    
-    this.tile.isRevealed = true;
   }
 
   plantFlag(){
-
+   this.toggleFlag.emit(this.tile);
   }
 }

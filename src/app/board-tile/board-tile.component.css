@@ -7,7 +7,9 @@
     vertical-align: top;
     line-height: 16px;
     text-align: center;
-    font-size: 8px;
+    font-size: 15px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .tile.isRevealed {
@@ -15,10 +17,22 @@
     line-height: 19px;    
 }
 
-.tile:active {
+.tile:not(.isRevealed):active {
     border-style: none;
 }
 
 .content.isNotRevealed {
     display: none;
+}
+
+.mine {
+    color: red;
+}
+
+.adjacentToMine {
+    color: blue;
+}
+
+.flag {
+    color: green;
 }

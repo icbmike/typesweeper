@@ -22,6 +22,32 @@ export class MinesweeperBoard {
     this._isInitialized = true;
   }
 
+  revealTile(x: number, y: number){
+    this.tiles[x][y].isRevealed = true;
+    this.revealAdjacentTiles(x, y);
+  }
+
+  revealAllTiles(){
+    _.forEach(this.tiles, tileRow => {
+      _.forEach(tileRow, tile => {
+        tile.isRevealed = true;
+      });
+    });
+  }
+
+  revealAdjacentTiles(x:number, y:number){
+      this.processAdjacentTiles(x, y, (tile, x1, y1) => {
+        if(!tile.isMine){
+          if(tile.numAdjacentMines > 0){
+            tile.isRevealed = true;            
+          } else if(!tile.isRevealed) {
+            tile.isRevealed = true;
+            this.revealAdjacentTiles(x1, y1);
+          }
+        }
+      });
+  }
+
   private setNumAdjacentMines(){
     _.forEach(this.tiles, (tileRow, i) => {
       _.forEach(tileRow, (tile, j) => {
@@ -32,9 +58,7 @@ export class MinesweeperBoard {
     });
   }
 
-  private calculateNumAdjacentMines(x : number, y : number) : number {
-    var adjacentMines = 0;
-
+  private processAdjacentTiles(x: number, y:number, callback: (tile: Tile, x1: number, y1: number) => void){
     for (var i = -1; i <= 1; i++) {
       let x1 = x + i;
 
@@ -49,12 +73,20 @@ export class MinesweeperBoard {
           continue;
         }
 
-        if(this.tiles[x1][y1].isMine){
-          adjacentMines++;
-        }
+        callback(this.tiles[x1][y1], x1, y1);
       }
     }
+  }
 
+  private calculateNumAdjacentMines(x : number, y : number) : number {
+    var adjacentMines = 0;
+
+    this.processAdjacentTiles(x, y, tile => {
+        if(tile.isMine){
+          adjacentMines++;
+        }
+    });
+     
     return adjacentMines;
   }
 

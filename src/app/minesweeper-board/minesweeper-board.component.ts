@@ -26,5 +26,22 @@ export class MinesweeperBoardComponent implements OnInit {
     if(!this.board.isInitialized()){
       this.board.initialize(x, y);
     }
+
+    tile.isRevealed = true;
+
+    if(tile.isMine){
+      this.gameOver();
+    }else if(tile.numAdjacentMines == 0){
+      this.board.revealTile(x, y);
+    }
+  }
+
+  gameOver(){
+    //reveal all tiles
+    this.board.revealAllTiles();
+  }
+
+  onToggleFlag(tile: Tile, x: number, y:number){
+    tile.hasFlag = !tile.hasFlag;
   }
 }
