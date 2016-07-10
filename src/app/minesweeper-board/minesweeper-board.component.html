@@ -3,8 +3,8 @@
 
   </div>
   <div class="tiles">
-    <div class="tileRow" *ngFor="tileRow in board.tiles">
-      <board-tile [tile]="tile" *ngFor="tile in tileRow"></board-tile>
+    <div class="tileRow" *ngFor="let tileRow of board.tiles">
+      <board-tile [tile]="tile" *ngFor="let tile of tileRow"></board-tile>
     </div>
   </div>
 </div>

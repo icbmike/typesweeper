@@ -7,10 +7,16 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  lodash: 'vendor/lodash'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  lodash: {
+    format: 'cjs',
+    main: 'index',
+    defaultExtension: 'js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,6 +44,7 @@ const barrels: string[] = [
   'app/+root',
   'app/new-game',
   'app/+game',
+  'app/board-tile',
   /** @cli-barrel */
 ];
 

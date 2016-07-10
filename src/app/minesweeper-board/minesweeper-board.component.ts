@@ -2,14 +2,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GameConfig } from '../+game';
 
 import { MinesweeperBoard } from '../shared'
-
-import * as _ from 'lodash';
+import { BoardTileComponent } from '../board-tile';
 
 @Component({
   moduleId: module.id,
   selector: 'minesweeper-board',
   templateUrl: 'minesweeper-board.component.html',
-  styleUrls: ['minesweeper-board.component.css']
+  styleUrls: ['minesweeper-board.component.css'],
+  directives: [BoardTileComponent]
 })
 export class MinesweeperBoardComponent implements OnInit {
 

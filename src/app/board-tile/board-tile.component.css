@@ -1,0 +1,24 @@
+.tile {
+    border-style: outset; 
+    width: 20px;
+    height: 20px;
+    background-color: lightgrey;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 16px;
+    text-align: center;
+    font-size: 8px;
+}
+
+.tile.isRevealed {
+    border: solid 1px;
+    line-height: 19px;    
+}
+
+.tile:active {
+    border-style: none;
+}
+
+.content.isNotRevealed {
+    display: none;
+}

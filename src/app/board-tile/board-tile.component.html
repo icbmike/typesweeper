@@ -1,0 +1,6 @@
+<div class="tile" (mousedown)="onMouseDown($event)" [class.isRevealed]="tile.isRevealed">
+    <span class="content" [class.isNotRevealed]="!tile.isRevealed">
+        <span class="mine" *ngIf="tile.isMine">M</span>
+        <span class="adjacentMines" *ngIf="!tile.isMine && tile.numAdjacentMines > 0">{{ tile.numAdjacentMines }}</span>
+    </span>
+</div>
