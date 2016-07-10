@@ -1,20 +1,21 @@
 .tile {
-    border-style: outset; 
-    width: 20px;
-    height: 20px;
+    border-style: outset;
+    border-width: 5px; 
+    width: 30px;
+    height: 30px;
     background-color: lightgrey;
     display: inline-block;
     vertical-align: top;
-    line-height: 16px;
+    line-height: 20px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     user-select: none;
     cursor: pointer;
 }
 
 .tile.isRevealed {
     border: solid 1px;
-    line-height: 19px;    
+    line-height: 29px;
 }
 
 .tile:not(.isRevealed):active {

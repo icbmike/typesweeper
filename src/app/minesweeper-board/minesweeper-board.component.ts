@@ -43,5 +43,8 @@ export class MinesweeperBoardComponent implements OnInit {
 
   onToggleFlag(tile: Tile, x: number, y:number){
     tile.hasFlag = !tile.hasFlag;
+    if(this.board.isGameWon()){
+      alert('You win');
+    }
   }
 }

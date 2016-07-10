@@ -22,6 +22,14 @@ export class MinesweeperBoard {
     this._isInitialized = true;
   }
 
+  isGameWon(): boolean {
+    return  _.every(this.tiles, tileRow => {
+      return _.every(tileRow, tile => {
+        return !tile.isMine || tile.hasFlag;
+      });
+    });
+  }
+
   revealTile(x: number, y: number){
     this.tiles[x][y].isRevealed = true;
     this.revealAdjacentTiles(x, y);
