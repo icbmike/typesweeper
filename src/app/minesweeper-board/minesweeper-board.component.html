@@ -3,8 +3,11 @@
 
   </div>
   <div class="tiles">
-    <div class="tileRow" *ngFor="let tileRow of board.tiles">
-      <board-tile [tile]="tile" *ngFor="let tile of tileRow"></board-tile>
+    <div class="tileRow" *ngFor="let tileRow of board.tiles; let x = index">
+      <board-tile 
+        [tile]="tile" 
+        *ngFor="let tile of tileRow; let y = index"
+        (tileRevealed)="onTileRevealed($event, x, y)"></board-tile>
     </div>
   </div>
 </div>

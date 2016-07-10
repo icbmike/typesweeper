@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameConfig } from '../+game';
 
-import { MinesweeperBoard } from '../shared'
+import { MinesweeperBoard, Tile } from '../shared'
 import { BoardTileComponent } from '../board-tile';
 
 @Component({
@@ -20,5 +20,11 @@ export class MinesweeperBoardComponent implements OnInit {
   ngOnInit() {
     //Build board
     this.board = new MinesweeperBoard(this.gameConfig.mines, this.gameConfig.width, this.gameConfig.height);
+  }
+
+  onTileRevealed(tile: Tile, x: number, y: number){
+    if(!this.board.isInitialized()){
+      this.board.initialize(x, y);
+    }
   }
 }

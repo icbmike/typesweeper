@@ -2,15 +2,24 @@ import * as _ from 'lodash';
 
 export class MinesweeperBoard {
 
-  private tiles: Tile[][];
+  tiles: Tile[][];
+  private _isInitialized = false;
 
   constructor(public numMines: number, public width: number, public height: number){
     // generate tiles
     this.tiles = _.map(_.range(width), i => _.map(_.range(height), j => new Tile()));
+  }
 
-    this.populateMines();
+  isInitialized(): boolean {
+    return this._isInitialized
+  }
 
-    this.setNumAdjacentMines();    
+  initialize(x: number, y: number){
+    this.populateMines(x, y);
+
+    this.setNumAdjacentMines();
+
+    this._isInitialized = true;
   }
 
   private setNumAdjacentMines(){
@@ -49,14 +58,16 @@ export class MinesweeperBoard {
     return adjacentMines;
   }
 
-  private populateMines(){
+  private populateMines(startingX: number, startingY: number){
     let numMines = this.numMines;
 
     while(numMines > 0){
       let x = Math.floor(Math.random() * this.width),
           y = Math.floor(Math.random() * this.height);
 
-      if(!this.tiles[x][y].isMine){
+      let matchesStartingTile = x == startingX && y == startingY;
+
+      if(!this.tiles[x][y].isMine && !matchesStartingTile){
         this.tiles[x][y].isMine = true;
         numMines--;
       }
@@ -65,7 +76,7 @@ export class MinesweeperBoard {
 }
 
 export class Tile {
-  isRevealed = true;
+  isRevealed = false;
   isMine = false;
   numAdjacentMines: number;
   hasFlag = false;

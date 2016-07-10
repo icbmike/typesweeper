@@ -10,7 +10,7 @@ import {Tile} from '../shared';
 export class BoardTileComponent {
 
   @Input() tile: Tile;
-  @Output() onTileRevealed = new EventEmitter<Tile>();
+  @Output() tileRevealed = new EventEmitter<Tile>();
 
   onMouseDown($event: MouseEvent){
     $event.preventDefault();
@@ -24,8 +24,8 @@ export class BoardTileComponent {
   }
 
   revealTile(){
+    this.tileRevealed.emit(this.tile);    
     this.tile.isRevealed = true;
-    this.onTileRevealed.emit(this.tile);
   }
 
   plantFlag(){
