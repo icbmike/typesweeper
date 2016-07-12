@@ -1,9 +1,39 @@
+:host {
+    text-align: center;
+    display: block;
+}
+
+.board {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .boardHeader {
     background-color: lightgray;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    height: 50px;
+    padding: 0 10px;
+    width: 100%;
 }
+
+.newGameButton {
+    padding: 0;
+}
+
+.newGameImage{
+    width: 100%;
+}
+
+.remainingMines, .timer {
+    font-size: 40px;
+    line-height: 49px;
+    display: inline-block;
+    width: 70px;
+}
+
 
 .tiles {
     display: flex;

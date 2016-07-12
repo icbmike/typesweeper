@@ -4,13 +4,15 @@ import { GameConfig } from '../+game';
 import { MinesweeperBoard, Tile } from '../shared'
 import { BoardTileComponent } from '../board-tile';
 import { Observable, Subscription } from 'rxjs/Rx';
+import { TimerFormatPipe} from './timer-formatter.pipe'
 
 @Component({
   moduleId: module.id,
   selector: 'minesweeper-board',
   templateUrl: 'minesweeper-board.component.html',
   styleUrls: ['minesweeper-board.component.css'],
-  directives: [BoardTileComponent]
+  directives: [BoardTileComponent],
+  pipes: [TimerFormatPipe]
 })
 export class MinesweeperBoardComponent implements OnInit {
 
@@ -45,7 +47,7 @@ export class MinesweeperBoardComponent implements OnInit {
 
   private timerObservable : Subscription = null;
 
-  timer: number;
+  timer: number = 0;
 
   startTimer(){
     if(this.timerObservable != null){
