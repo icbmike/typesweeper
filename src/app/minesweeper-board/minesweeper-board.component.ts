@@ -3,6 +3,7 @@ import { GameConfig } from '../+game';
 
 import { MinesweeperBoard, Tile } from '../shared'
 import { BoardTileComponent } from '../board-tile';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
   moduleId: module.id,
@@ -16,10 +17,10 @@ export class MinesweeperBoardComponent implements OnInit {
   @Input() gameConfig: GameConfig;
 
   board: MinesweeperBoard
+  newGameImageSrc: string
 
   ngOnInit() {
-    //Build board
-    this.board = new MinesweeperBoard(this.gameConfig.mines, this.gameConfig.width, this.gameConfig.height);
+    this.onNewGame();
   }
 
   onTileRevealed(tile: Tile, x: number, y: number){
@@ -36,15 +37,43 @@ export class MinesweeperBoardComponent implements OnInit {
     }
   }
 
+  onNewGame(){
+    this.newGameImageSrc = '/assets/smiley.png';
+    this.startTimer();
+    this.board = new MinesweeperBoard(this.gameConfig.mines, this.gameConfig.width, this.gameConfig.height);
+  }
+
+  private timerObservable : Subscription = null;
+
+  timer: number;
+
+  startTimer(){
+    if(this.timerObservable != null){
+      this.timerObservable.unsubscribe();
+    }
+
+    this.timerObservable = Observable.interval(1000)
+                              .subscribe(val => {
+                                this.timer = val;
+                              });
+  }
+
+  gameWon(){
+    alert('You win');
+    this.newGameImageSrc = '/assets/sunglasses.png';
+    this.timerObservable.unsubscribe();
+  }
+
   gameOver(){
-    //reveal all tiles
     this.board.revealAllTiles();
+    this.newGameImageSrc = '/assets/dead.png';
+    this.timerObservable.unsubscribe();
   }
 
   onToggleFlag(tile: Tile, x: number, y:number){
     tile.hasFlag = !tile.hasFlag;
     if(this.board.isGameWon()){
-      alert('You win');
+      this.gameWon();  
     }
   }
 }

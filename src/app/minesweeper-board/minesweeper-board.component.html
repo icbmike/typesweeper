@@ -1,6 +1,8 @@
 <div class="board">
   <div class="boardHeader">
-
+    <span class="remainingMines">{{99}}</span>
+    <button (click)="onNewGame()"><img [src]="newGameImageSrc" /></button>
+    <span class="timer">{{timer}}</span>
   </div>
   <div class="tiles">
     <div class="tileRow" *ngFor="let tileRow of board.tiles; let x = index">
