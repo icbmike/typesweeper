@@ -1,3 +1,6 @@
 
 <new-game (onGameCreated)="onGameCreated($event)" *ngIf="!gameStarted"></new-game>
 <minesweeper-board [gameConfig]="gameConfig" *ngIf="gameStarted"></minesweeper-board>
+<div class="links">
+    <a [routerLink]="['/']">Home</a> <a href="javascript://" (click)="newGame()" *ngIf="gameStarted">New Game</a>
+</div>
