@@ -20,6 +20,7 @@ export class MinesweeperBoardComponent implements OnInit {
 
   board: MinesweeperBoard
   newGameImageSrc: string
+  numRemainingMines: number
 
   ngOnInit() {
     this.onNewGame();
@@ -43,6 +44,7 @@ export class MinesweeperBoardComponent implements OnInit {
     this.newGameImageSrc = '/assets/smiley.png';
     this.startTimer();
     this.board = new MinesweeperBoard(this.gameConfig.mines, this.gameConfig.width, this.gameConfig.height);
+    this.numRemainingMines = this.gameConfig.mines;
   }
 
   private timerObservable : Subscription = null;
@@ -74,6 +76,7 @@ export class MinesweeperBoardComponent implements OnInit {
 
   onToggleFlag(tile: Tile, x: number, y:number){
     tile.hasFlag = !tile.hasFlag;
+    this.numRemainingMines += tile.hasFlag ? -1 : 1;
     if(this.board.isGameWon()){
       this.gameWon();  
     }
