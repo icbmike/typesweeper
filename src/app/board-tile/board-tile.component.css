@@ -14,7 +14,7 @@
 }
 
 .tile.isRevealed {
-    border: solid 1px;
+    border: solid 1px gray;
     line-height: 29px;
 }
 
@@ -31,7 +31,38 @@
 }
 
 .adjacentToMine {
+    font-weight: bold;
+}
+
+.adjacent-1 {
     color: blue;
+}
+
+.adjacent-2 {
+    color: green;
+}
+
+.adjacent-3 {
+    color: red;
+}
+.adjacent-4 {
+    color: darkblue;
+}
+
+.adjacent-5 {
+    color: maroon;
+}
+
+.adjacent-6 {
+    color: purple;
+}
+
+.adjacent-7 {
+    color: mediumpurple;
+}
+
+.adjacent-8 {
+    color: magenta;
 }
 
 .flag {

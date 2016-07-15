@@ -37,4 +37,8 @@ export class BoardTileComponent {
   plantFlag(){
    this.toggleFlag.emit(this.tile);
   }
+
+  adjacencyClass(numAdjacentMines: number) : string {
+    return `adjacentToMine adjacent-${numAdjacentMines}`;
+  }
 }
