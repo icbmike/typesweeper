@@ -5,5 +5,5 @@
               [class]="adjacencyClass(tile.numAdjacentMines)" 
               *ngIf="!tile.isMine && tile.numAdjacentMines > 0">{{ tile.numAdjacentMines }}</span>
     </span>
-    <img src="/assets/flag.svg" class="flag" *ngIf="tile.hasFlag" />
+    <img src="assets/flag.svg" class="flag" *ngIf="tile.hasFlag" />
 </div>
