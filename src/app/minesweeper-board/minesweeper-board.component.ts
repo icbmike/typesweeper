@@ -41,7 +41,7 @@ export class MinesweeperBoardComponent implements OnInit {
   }
 
   onNewGame(){
-    this.newGameImageSrc = '/assets/smiley.png';
+    this.newGameImageSrc = 'assets/smiley.png';
     this.startTimer();
     this.board = new MinesweeperBoard(this.gameConfig.mines, this.gameConfig.width, this.gameConfig.height);
     this.numRemainingMines = this.gameConfig.mines;
@@ -64,13 +64,13 @@ export class MinesweeperBoardComponent implements OnInit {
 
   gameWon(){
     alert('You win');
-    this.newGameImageSrc = '/assets/sunglasses.png';
+    this.newGameImageSrc = 'assets/sunglasses.png';
     this.timerObservable.unsubscribe();
   }
 
   gameOver(){
     this.board.revealAllTiles();
-    this.newGameImageSrc = '/assets/dead.png';
+    this.newGameImageSrc = 'assets/dead.png';
     this.timerObservable.unsubscribe();
   }
 
