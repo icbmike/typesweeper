@@ -1,0 +1,30 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    padding: 15px;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+span {
+    display: inline-block;
+    width: 75px;
+}
+
+input {
+    width: 50px;
+}
+
+:host {
+    width: 1000px;
+    margin: 0 auto;
+    display: block;
+}

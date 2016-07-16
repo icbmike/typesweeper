@@ -1,0 +1,13 @@
+<h1>Start a new game!</h1>
+
+<div class="buttons">
+  <button (click)="buttonClick(gameDifficulty.Beginner)">Beginner</button>
+  <button (click)="buttonClick(gameDifficulty.Intermediate)">Intermediate</button>
+  <button (click)="buttonClick(gameDifficulty.Expert)">Expert</button>
+
+  <button (click)="buttonClick(gameDifficulty.Custom)">Custom</button>
+
+  <label><span>Width:</span> <input type="number" name="width" [(ngModel)]="model.width" /></label> 
+  <label><span>Height:</span> <input type="number" name="height" [(ngModel)]="model.height" /></label> 
+  <label><span>Mines:</span> <input type="number" name="mines" [(ngModel)]="model.mines" /></label>
+</div>

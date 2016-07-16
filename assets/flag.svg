@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 120 120"
+     width="150"
+     height="150">
+    <circle r="9" cx="30" cy="15"/>
+    <!-- The cloth-->
+    <rect x="30" y="25" width="60" height="40" style="fill: red;"/>
+    <!-- The pole -->
+    <rect x="25" y="15" width="10" height="105"/>
+    <!-- The stand s-->
+    <rect x="20" y="110" height="10" width="20"/>
+</svg>

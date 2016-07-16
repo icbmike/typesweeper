@@ -1,0 +1,18 @@
+<div class="board">
+  <div class="boardHeader">
+    <span class="remainingMines">{{numRemainingMines}}</span>
+    <button (click)="onNewGame()" class="newGameButton">
+      <img [src]="newGameImageSrc" class="newGameImage"/>
+    </button>
+    <span class="timer">{{timer | timerFormat}}</span>
+  </div>
+  <div class="tiles">
+    <div class="tileRow" *ngFor="let tileRow of board.tiles; let x = index">
+      <board-tile 
+        [tile]="tile" 
+        *ngFor="let tile of tileRow; let y = index"
+        (tileRevealed)="onTileRevealed($event, x, y)"
+        (toggleFlag)="onToggleFlag($event, x, y)"></board-tile>
+    </div>
+  </div>
+</div>
